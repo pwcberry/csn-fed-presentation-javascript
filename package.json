@@ -1,0 +1,29 @@
+{
+  "name": "csn-fed-presentation-javascript",
+  "version": "0.0.1",
+  "description": "Presentation",
+  
+  "author": {
+    "name": "Peter Berry",
+    "email": "peter.berry@carsales.com.au"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pwcberry/csn-fed-presentation-javascript.git"
+  },
+  "engines": {
+    "node": "~0.8.0"
+  },
+  "dependencies": {
+    "underscore": "~1.5.1",
+    "express": "~2.5.9",
+    "mustache": "~0.7.2",
+    "socket.io": "~0.9.13"
+  },
+  "devDependencies": {
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-less": "~0.9",
+    "grunt-contrib-connect": "~0.4.1",
+    "grunt": "~0.4.0"
+  }
+}
