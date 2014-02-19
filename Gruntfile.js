@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 		less: {
 			theme: {
 	            files: {
-	                './css/carsales-theme.css': './css/theme/less/carsales.less'
+	                './css/carsales-theme.css': './css/src/carsales.less'
 	            }
 			}
 		},
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 
 		watch: {
 			theme: {
-				files: [ 'css/theme/less/*.less' ],
+				files: [ 'css/src/*.less' ],
 				tasks: 'themes'
 			}
 		}
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
 
 	// Default task
-	grunt.registerTask( 'default', [ 'jshint', 'cssmin', 'uglify', 'qunit' ] );
+	grunt.registerTask( 'default', [ 'serve' ] );
 
 	// Theme task
 	grunt.registerTask( 'themes', [ 'less' ] );

@@ -15,15 +15,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/solarized.css">
 		<link rel="stylesheet" href="css/carsales-theme.css" id="theme">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
-
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
+		<link rel="stylesheet" href="lib/css/zenburn.css"id="highlight-theme">
 
 	</head>
 
@@ -34,11 +30,20 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section class="first">
-					<header>
-						<h1>JavaScript</h1>
-						<h2>Front-End Developer Series</h2>
-					</header>
+						<h1>Front-End Developer Series</h1>
+						<h3>HTML, CSS, JS and Performance</h3>
+						<img src="images/carsalesFrontEnd.png" alt="Carsales Front-End"/>
 				</section>
+
+				<section data-markdown="slides/contents.md"></section>
+				
+				<section>
+					<h1>Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.</h1>
+					<a href="https://twitter.com/kylerichter/status/15101151292694529">https://twitter.com/kylerichter/status/15101151292694529</a>
+				</section>
+
+				<section data-markdown="slides/introducing-js.md"></section>
+
 
 				<section>
 					<h1>THE END</h1>
@@ -50,11 +55,9 @@
 		</div>
 
 
-		<div class="slide-footer">
-			<h2>Product and Technology</h2>
-			<p class="tag-line">Driven by innovation, fuelled by passion</p>
+		<footer class="slide-footer">
 			<span class="logo">logo</span>
-		</div>
+		</footer>
 
 
 		<script src="lib/js/head.min.js"></script>
@@ -65,7 +68,7 @@
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: false,
+				controls: true,
 				progress: true,
 				history: true,
 				center: true,
@@ -79,7 +82,7 @@
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					/*{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },*/
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
