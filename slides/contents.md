@@ -1,8 +1,9 @@
-## JavaScript
+JavaScript
+----------
 
-What is Maintenance <!-- .element: class="fragment" -->
+A quiet chat about maintenance <!-- .element: class="fragment" -->
 
-Introducing JS <!-- .element: class="fragment" -->
+Introducing JavasScript <!-- .element: class="fragment" -->
 
 Style <!-- .element: class="fragment" -->
 

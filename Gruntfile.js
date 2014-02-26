@@ -1,30 +1,58 @@
 /* global module:false */
 module.exports = function(grunt) {
-	var port = grunt.option('port') || 9000;
+	const port = 1995;
 	// Project configuration
 	grunt.initConfig({
 		less: {
 			theme: {
 	            files: {
 	                './css/carsales-theme.css': './css/src/carsales.less'
+	            },
+	            options: {
+	            	livereload: true
 	            }
 			}
 		},
 
 		connect: {
-			server: {
-				options: {
-					port: port,
-					base: '.'
-				}
-			}
+			options: {
+				port: port,
+				livereload: 36022,
+                hostname: 'localhost'
+            },
+            livereload: {
+                options: {
+                    open: true,
+                    base: ['.']
+                }
+            }
 		},
 
 		watch: {
 			theme: {
 				files: [ 'css/src/*.less' ],
-				tasks: 'themes'
-			}
+				tasks: 'themes',
+				options: {
+					livereload:true
+				}
+			},
+			markdown: {
+				files: ['./slides/*.md', '!./slides/outline.md'],
+				options: {
+					livereload:true
+				}
+			},
+			livereload: {
+                options: {
+                    livereload: '<%= connect.options.livereload %>'
+                },
+                /* These are the files that are watched by live reload */
+                files: [
+                	'./*.html',
+                	'./app/styles/*.css',
+                	'./app/scripts/*.js'
+                ]
+            }
 		}
 
 	});

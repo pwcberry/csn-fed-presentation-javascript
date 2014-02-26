@@ -41,6 +41,9 @@ Douglas Crockford:
 	- patterns
 	- preferred usages
 
+* ECMAScript 5
+	- 'use strict'
+
 Libraries and Frameworks
 ------------------------
 
