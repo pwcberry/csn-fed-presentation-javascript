@@ -1,7 +1,4 @@
-## JavaScript Patterns
+## Truthy
 
-### Conventions
-
-Immediately executing anonymous function (module) <!-- .element: class="fragment" -->
-
+Any expression, or value, when evaluated results in boolean TRUE
 

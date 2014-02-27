@@ -1,7 +1,3 @@
-## JavaScript Patterns
+## Falsy
 
-### Conventions
-
-ECMAScript5 <!-- .element: class="fragment" -->
-
-<p class="fragment"><code>use strict</code> pragma</p>
+Any expression, or value, when evaluated results in boolean FALSE

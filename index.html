@@ -45,7 +45,7 @@
 
 <section data-markdown="slides/maintenance-2.md"></section>
 
-<section class="with-quote has-background" data-background="#000">
+<section class="has-quote" data-background="black">
 	<blockquote>
 	<p>Programs are meant to be read by humans, only incidentally by computers to execute</p>
 	<cite>Donald Knuth</cite>
@@ -59,7 +59,7 @@
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </section>
 
-<section class="introducing-js"><h1>Introducting JavaScript</h1></section>
+<section class="introducing-js"><h1>Introducing JavaScript</h1></section>
 
 <section data-markdown="slides/introducing-js-1.md"></section>
 
@@ -71,9 +71,9 @@
 
 <section data-markdown="slides/introducing-js-5.md"></section>
 
-<section class="style-js"><h1>Style</h1></section>
+<section class="style-js"><h1>Programming Style</h1></section>
 
-<section class="with-quote has-background" data-background="images/pwcberry_crockford.jpg">
+<section class="has-quote" data-background="black">
 <blockquote>
 <p>If there is a feature of the language that is sometimes problematic, and if it can be replaced with another feature that is more reliable, then always use the more reliable feature.</p>
 <cite>Douglas Crockford</cite>
@@ -82,58 +82,455 @@
 
 <section>
 <section data-markdown="slides/style-1.md"></section>
-	<section>
-	<pre>
-	<code class="hljs javascript">
-	// Code sample goes here
-	</code>
-	</pre>
-	</section>
 </section>
 
-<section>
+<section id="Truthy">
 <section data-markdown="slides/style-2.md"></section>
-	<section>
-	<pre>
-	<code class="hljs javascript">
-	// Code sample goes here
-	</code>
-	</pre>
-	</section>
-</section>
-
-<section>
-<section data-markdown="slides/style-3.md"></section>
-	<section>
-	<pre>
-	<code class="hljs javascript">
-	// Code sample goes here
-	</code>
-	</pre>
-	</section>
-</section>
-
-<section>
-	<section data-markdown="slides/style-4.md"></section>
-	<section>
-	<pre>
-	<code class="hljs javascript">
-	// Code sample goes here
-	</code>
-	</pre>
-	</section>
-</section>
-
-<section>
-<section data-markdown="slides/style-5.md"></section>
 <section>
 <pre>
-<code class="hljs javascript">
-// Code sample goes here
+<code class="javascript">
+// any number that isn't zero evaluates to TRUE
+var a = [1, 2, 3];
+while (a.length) {
+	// do something with array
+}
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+// any string that isn't empty evaluates to TRUE
+var s = "This is interesting";
+if (s) {
+	// while s.length is a postive number,
+	// we can just evaluate the string.
+}
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+// any object reference that isn't null or undefnied
+// evaluates to TRUE
+var o = {};
+if (o) {
+	// 'o' exists, let's do something with it
+}
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+// an example ajax success callback
+// receiving (parsed) JSON data
+function success(data) {
+	// check if data was returned as array
+	if (data && data.length) {
+		// do something with the array
+	} else if (data) {
+		// only one object
+	}
+}
+</code>
+</pre>
+</section>
+</section>
+
+<section id="Falsy">
+<section data-markdown="slides/style-3.md"></section>
+<section>
+<pre>
+<code class="javascript">
+// "zero" (0) evalues to FALSE
+var elements = $('#Container > div');
+if (!elements.length) {
+	// There are no elements in this jQuery object
+}
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+// An empty string ('') evaluates to FALSE
+var s = '';
+if (!s) {
+
+}
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+// "undefined" evaluates to FALSE
+var data;
+if (!data) {
+	// data is not defined ('undefined' by default)
+}
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+// "null" evaluates to FALSE
+function Widget() {
+	this.element = null;
+}
+var w = new Widget();
+if (!w.element) {
+	// element is null
+}
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+// Because of "false", we have "coalesce"
+(function() {
+	// CSN is the root namespace
+	// If it hasn't already been defined, do so
+	// Thanks to the short circuit "or",
+	// the left side will evalute to FALSE
+	// and assign an empty object to the 
+	// global "CSN" and the local variable.
+
+	var CSN = window.CSN || (window.CSN = {});
+
+}());
+</code>
+</pre>
+</section>
+</section>
+
+<section id="IIFE">
+<section data-markdown="slides/style-4.md"></section>
+	<section>
+	<pre>
+	<code class="javascript">
+(function($, CSN) {
+
+	// define hidden objects and variables here
+
+	// define functions, classes here that are part of namespaces
+
+	// define jQuery plugins
+
+}(jQuery, (window.CSN || (window.CSN = {}))));
+	</code>
+	</pre>
+	</section>
+</section>
+
+<section id="Namespaces">
+	<section data-markdown="slides/style-5.md"></section>
+	<section>
+	<pre>
+	<code class="javascript">
+(function(CSN){
+	// "CSN" is the root namespace
+	// Check if the "Utils" namespace has been defined
+	// and then use an alias variable to ease typing
+
+	var utils = CSN.Utils || (CSN.Utils = {});
+
+	// Add public functions to CSN.Utils
+
+	utils.format = function(s) {
+		// defines CSN.Utils.format()
+	};
+
+}((window.CSN || (window.CSN = {}))));
+	</code>
+	</pre>
+	</section>
+</section>
+
+<section id="No-Block-Scope">
+<section data-markdown="slides/style-6.md"></section>
+<section>
+<pre>
+<code class="javascript">
+// You need to record the index of each element
+var element, inputs = document.getElementById('Module').getElementsByTagName('input');
+
+for (var i, j = inputs.length; i < j; i++) {
+	element = inputs.eq(i);
+	// Retain the value of "i" for each iteration
+	// By passing the value into this IIFE
+	(function(i) {
+		element.on('focus', function() {
+			// do something with "i"
+			$(this).data('index', i);
+		});
+	})(i);
+}
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+// You need to record the index of each element
+// Even better
+$('#Module input').each(function(i, element){
+	// Each index is recorded
+	$(element).data('index', i);
+});
+</code>
+</pre>
+</section>
+</section>
+
+<section id="No-Lexical-Scope">
+<section data-markdown="slides/style-7.md"></section>
+<section>
+<pre>
+<code class="javascript">
+function Widget(element) {
+	this.element = element;
+}
+
+Widget.prototype.change = function() {};
+
+Widget.prototype.init = function() {
+	this.element.on('click', function() {
+		// In here, "this" refers to the element
+	});
+}
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+function Widget(element) {
+	this.element = element;
+}
+
+Widget.prototype.change = function() {};
+
+Widget.prototype.init = function() {
+	var that = this;
+	this.element.on('click', function() {
+		// In here, "this" refers to the element
+		// But we can use "that" 
+		// to refer to the containing object
+		that.change();
+	});
+}
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+'use strict';
+// Using Function.bind()
+function Widget(element) {
+	this.element = element;
+}
+
+Widget.prototype.change = function() {};
+
+Widget.prototype.init = function() {
+	var that = this;
+	this.element.on('click', function(ev) {
+		// In here "this" refers to
+		// the containing object
+		this.change();
+	}.bind(this));
+}
+</code>
+</pre>
+</section>
+</section>
+
+<section id="Function-Currying">
+<section data-markdown="slides/style-8.md"></section>
+<section>
+<pre>
+<code class="javascript">
+// Function currying
+JsonpService.postAjax = function (aspect, canPipe, itemCountKey) {
+    return function (data, error, msg) {
+        var newCount;
+        if (!error) {
+            newCount = parseInt(data[itemCountKey], 10);
+            if (!isNaN(newCount)) {
+                this.itemCount = newCount;
+            }
+
+            if (canPipe) {
+                data = this.pipe("out", data);
+            }
+
+            this.notify(aspect, data);
+
+            if (this.itemCount >= this.maximum) {
+                this.notify("full", this.itemCount);
+            }
+        } else {
+            this.errorHandler(error, msg);
+        }
+    };
+};
+
+JsonpService.prototype.create = function (data) {
+    var handler = JsonpService.postAjax("create", true, "NewCount");
+	// wrap in jQuery.proxy to improve lexical scope
+	// and pass the handler to jQuery.ajax
+};
+</code>
+</pre>
+</section>
+</section>
+
+<section id="jQuery-Plugin-Definition">
+<section data-markdown="slides/style-9.md"></section>
+<section>
+<pre>
+<code class="javascript">
+(function($) {
+	'use strict';
+	
+	// "ToolboxWidget" class is hidden from outside world
+	function ToolboxWidget(element) {
+		this.element = element;
+		// Define other properties
+	}
+	ToolboxWidget.prototype.init = function() {
+		// Initialize state
+		// Invoke other setup methods
+	};
+
+	$.fn.toolbox = function(options) {
+		options = $.extend({}, $.fn.toolbox.defaults, options);
+
+		this.each(function() {
+			// The ToolboxWidget handles the state
+			// of the object. We're reducing the
+			// number of DOM interactions to
+			// improve performance.
+			var w = new ToolboxWidget($(this));
+			w.init();
+
+			// do more with widget
+
+			w.data('widget', w);
+		});
+	
+		return this;
+	};
+
+	$.fn.toolbox.defaults = {};
+
+}(jQuery));
+</code>
+</pre>
+</section>
+</section>
+
+
+<section id="Single-Point-Of-Entry">
+<section data-markdown="slides/style-13.md"></section>
+<section>
+<pre>
+<code class="javascript">
+ 
 </code>
 </pre>
 </section>
 
+<section id="Anti-Patterns">
+<section data-markdown="slides/style-10.md"></section>
+<section>
+<pre>
+<code class="javascript">
+// Automatic semicolon insertion
+// No braces around single-line blocks
+// 
+</code>
+</pre>
+</section>
+
+<section id="Strange-Parts">
+<section data-markdown="slides/style-12.md"></section>
+<section>
+<pre>
+<code class="javascript">
+// typeof
+// type coercion
+</code>
+</pre>
+</section>
+
+<section id="ECMAScript5">
+<section data-markdown="slides/style-11.md"></section>
+<section>
+<pre>
+<code class="javascript">
+(function() {
+	'use strict';
+
+	// OK, define module
+	// Any variable not defined will throw an error
+}());
+</code>
+</pre>
+</section>
+
+<section>
+<section data-markdown="slides/style-tools.md"></section>
+<section>
+	<h3><a href="http://www.jslint.com/">JS Lint</a></h3>	
+<pre>
+<code class="javascript">
+jQuery("body").on('click', function() {
+    a = a + 1
+    if (a == 1) alert('Hello World);
+})
+</code>
+</pre>
+</section>
+<section>
+	<h3><a href="http://www.jshint.com/">JS Hint</a></h3>	
+<pre>
+<code class="javascript">
+jQuery("body").on('click', function() {
+    a = a + 1
+    if (a == 1) alert('Hello World);
+})
+</code>
+</pre>
+</section>
+<section>
+<h3><a href="http://json.parser.online.fr/">JSON Parser</a></h3>	
+<pre>
+	<code class="javascript">
+		{ "name": "Peter","description":"has written some dodge code in the past", "flagged":true, "age":41}
+	</code>
+</pre>
+</section>
+<section>
+<h3><a href="http://jsbeautifier.org/">JS Beautifier</a></h3>	
+<pre>
+	<code class="javascript">
+		{ "name": "Peter","description":"has written some dodge code in the past", "flagged":true, "age":41}
+	</code>
+</pre>
+</section>
+</section>
+
+<section class="has-quote" data-background="black">
+<blockquote>
+	<p>Code in a manner that another developer, who is not familiar with JavaScript, can comprehend the intent of the code.</p>
+</blockquote>
 </section>
 
 <section class="libraries-js"><h1>Libraries and Frameworks</h1></section>
@@ -144,93 +541,83 @@
 
 <section>
 <section data-markdown="slides/libraries-3.md"></section>
-<section class="geezer-code">
+<section>
 <pre>
-<code class="hljs javascript">
+<code class="javascript">
 // Geezer Code sample goes here
 </code>
 </pre>
 </section>
 </section>
-
-<section class="living-without-jquery">
-<section data-markdown="slides/libraries-4.md"></section>
-<section class="geezer-code">
-<pre>
-<code class="hljs javascript">
-// Geezer Code sample goes here
-</code>
-</pre>
-</section>
-</section>
-
-<section class="performance-js"><h1>Performance</h1></section>
-
-<section data-markdown="slides/performance-1.md"></section>
-
-<section class="tools-js"><h1>Tools</h1></section>
-
-<section data-markdown="slides/tools-1.md"></section>
-
-<section data-markdown="slides/tools-2.md"></section>
-
-<section data-markdown="slides/tools-3.md"></section>
-
-<section data-markdown="slides/tools-4.md"></section>
-
-<section class="node-js"><h1>Node.js</h1></section>
-
-<section data-markdown="slides/nodejs-1.md"></section>
 
 <section class="future-js"><h1>The Future</h1></section>
+<section>
+<section id="The-Future" data-markdown="slides/the-future-1.md"></section> 
+<section>
+<pre>
+<code class="javascript">
+// Promises
+ajax('http://api.fantastic.com/post/12343').success(function(data){
+	// Do something
+}).then(function() {
+	// do something more, only if the response was successful.
+});
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+// Generators
 
-<section data-markdown="slides/the-future-1.md"></section>
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+// Weak Maps
+
+</code>
+</pre>
+</section>
+</section>
+
+<section id="Next-Week">
+	<h1>Performance</h1>
+	<p>Hosted by: Alastair</p>
+</section>
+
 
 <section class="recap-js"><h1>Recap</h1></section>
 
 <section data-markdown="slides/recap.md"></section>
 
-<section class="javascript-is-cool" data-background="images/Doctor_Who_stretches_bow_tie.jpg"><h2>JavaScript is cool</h2></section>
-
 <section class="resources-js"><h1>Resources</h1></section>
-<section><h2>Video</h2></section>
-<section>
+<section id="Essential-Viewing"><h2>Essential Viewing</h2></section>
+<section data-transition="linear">
 <h2>Maintainable JavaScript</h2>
 <h3>Nicholas Zakas</h3>
 <iframe width="640" height="480" src="//www.youtube.com/embed/c-kav7Tf834" frameborder="0" allowfullscreen></iframe>
 </section>
-<section>
+<section data-transition="linear">
 	<h2></h2>
 	<h3>Douglas Crockford</h3>
 	<iframe width="560" height="315" src="//www.youtube.com/embed/_EANG8ZZbRs" frameborder="0" allowfullscreen></iframe>
 </section>
-<section>
-<h2>Enough with the JavaScript Already</h2>
-<h3>Nicholas Zakas</h3>
-<iframe width="560" height="315" src="//www.youtube.com/embed/li4Y0E_x8zE" frameborder="0" allowfullscreen></iframe>
-</section>
-<section>
-	<h2>JavaScript: Your New Overlord</h2>
-	<h3>Douglas Crockford</h3>
-	<iframe width="560" height="315" src="//www.youtube.com/embed/yI8rYQtkwC4" frameborder="0" allowfullscreen></iframe>
-</section>
+<section data-markdown="slides/resources-books.md"></section>
+<section data-transition="linear" data-markdown="slides/resources-links.md"></section>
+<section data-transition="linear" data-markdown="slides/resources-refs.md"></section>
 
-<section data-markdown="slides/resources-links.md"></section>
-
-<section>
-	<h1>The End</h1>
-	<p><a href="https://twitter.com/pwcberry">@pwcberry</a></p>
-</section>
+<section class="javascript-is-cool" data-background="images/Doctor_Who_stretches_bow_tie.jpg"><h2>JavaScript is cool</h2></section>
 
 			</div>
 
 		</div>
 
-
 		<footer class="slide-footer">
 			<span class="logo">logo</span>
 		</footer>
-
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>

@@ -8,4 +8,3 @@ Lack of lexical scope <!-- .element: class="fragment" -->
 
 Automatic semi-colon insertion <!-- .element: class="fragment" -->
 
-Floating point <!-- .element: class="fragment" -->

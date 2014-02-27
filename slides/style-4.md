@@ -1,5 +1,4 @@
-## JavaScript Patterns
+## Module Pattern
 
-### Tricks
+The Immediately-Invoked Function Expression (IIFE) allows encapsulation, privacy and reduces the effect of global scope. <!-- .element: class="fragment" -->
 
-Give your component an entry point, or a "main" method. <!-- .element: class="fragment" -->
