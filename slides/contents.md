@@ -1,9 +1,8 @@
-JavaScript
-----------
+# JavaScript
 
 A quiet chat about maintenance <!-- .element: class="fragment" -->
 
-Introducing JavasScript <!-- .element: class="fragment" -->
+Introducing JavaScript <!-- .element: class="fragment" -->
 
 Style <!-- .element: class="fragment" -->
 

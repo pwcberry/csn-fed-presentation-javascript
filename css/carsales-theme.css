@@ -1,3 +1,67 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+/**
+ * Solarized Light theme for reveal.js.
+ * Author: Achim Staebler
+ */
+@font-face {
+  font-family: 'League Gothic';
+  src: url("../../lib/font/league_gothic-webfont.eot");
+  src: url("../../lib/font/league_gothic-webfont.eot?#iefix") format("embedded-opentype"), url("../../lib/font/league_gothic-webfont.woff") format("woff"), url("../../lib/font/league_gothic-webfont.ttf") format("truetype"), url("../../lib/font/league_gothic-webfont.svg#LeagueGothicRegular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+.reveal {
+  font-family: "Lato", sans-serif;
+  font-size: 36px;
+  font-weight: normal;
+  letter-spacing: -0.02em;
+  color: #657b83;
+}
+::selection {
+  color: white;
+  background: #d33682;
+  text-shadow: none;
+}
+/*********************************************
+ * HEADERS
+ *********************************************/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 20px 0;
+  color: #586e75;
+  font-family: "League Gothic", Impact, sans-serif;
+  line-height: 0.9em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: none;
+}
+.reveal h1 {
+  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+}
+/*********************************************
+ * PRESENTATION-SPECIFIC
+ *********************************************/
+.with-quote > blockquote > p {
+  font-size: 2em;
+}
+.has-background > blockquote {
+  color: white;
+  width: 100%;
+}
+.has-background h2 {
+  color: white;
+}
+.javascript-is-cool h2 {
+  color: black;
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+}
 /*********************************************
  * CARSALES-SPECIFIC
  *********************************************/
