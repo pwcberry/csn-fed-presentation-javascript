@@ -7,3 +7,5 @@ Promises <!-- .element: class="fragment bullet" -->
 Generators  <!-- .element: class="fragment" -->
 
 Weak Maps <!-- .element: class="fragment" -->
+
+Block Scope <!-- .element: class="fragment" -->

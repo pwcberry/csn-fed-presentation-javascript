@@ -24,7 +24,7 @@
 	</head>
 
 	<body>
-
+		<span class="js-logo"><img src="/images/JS_Logo.svg" width="100" /></span>
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
@@ -441,22 +441,105 @@ JsonpService.prototype.create = function (data) {
 <section data-markdown="slides/style-13.md"></section>
 <section>
 <pre>
-<code class="javascript">
- 
+<code class="html">
+&lt;body&gt;
+&lt;!-- generated HTML here --&gt;
+
+&lt;!-- scripts at bottom of page for performance --&gt;
+&lt;script src=&quot;./scripts/toolbox-widget.js&quot;&gt;&lt;/script&gt;
+&lt;!-- define entry point for Toolbox Widget, with configuration --&gt;
+&lt;script&gt;
+(function($){
+$(&quot;#Toolbox&quot;).toolbox({searchUrl:&quot;/results/{0}&quot;});
+}(jQuery));
+&lt;/script&gt;
+&lt;/body&gt;
 </code>
 </pre>
 </section>
 
-<section id="Anti-Patterns">
+<section>
+<pre>
+<code class="html">
+&lt;body&gt;
+&lt;!-- generated HTML here --&gt;
+
+&lt;!-- scripts at bottom of page for performance --&gt;
+&lt;script src=&quot;./scripts/app.js&quot;&gt;&lt;/script&gt;
+&lt;!-- set up, with configuration --&gt;
+&lt;script&gt;
+(function($){
+CSN.App.init({startPage:2});
+}(jQuery));
+&lt;/script&gt;
+&lt;/body&gt;
+</code>
+</pre>
+</section>
+</section>
+
+<section id="Automatic-Semicolon-Insertion">
 <section data-markdown="slides/style-10.md"></section>
 <section>
 <pre>
 <code class="javascript">
-// Automatic semicolon insertion
-// No braces around single-line blocks
-// 
+function someMethod() {
+	return
+	{
+		name: "Peter"
+	}
+}
 </code>
 </pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+function someMethod() {
+	return {
+		name: "Peter"
+	};
+}
+</code>
+</pre>
+</section>
+</section>
+
+<section id="Blocks-Without-Braces">
+<section data-markdown="slides/style-14.md"></section>
+<section>
+<pre>
+<code class="javascript">
+if (a > 10)
+	doThis();
+else
+	doThat();
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+if (a > 10)
+	doThis();
+	doSomethingElse();
+else
+	doThat();
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+if (a > 10) {
+	doThis();
+	doSomethingElse();
+} else {
+	doThat();
+}
+</code>
+</pre>
+</section>
 </section>
 
 <section id="Strange-Parts">
@@ -464,10 +547,69 @@ JsonpService.prototype.create = function (data) {
 <section>
 <pre>
 <code class="javascript">
-// typeof
-// type coercion
+// typeof "ABC" == "string"
+// typeof 2134 == "number"
+// typeof {} == "object"
+// typeof function() {} == "function"
+// typeof null == "object"
+// typeof [] == "object"
+// typeof undefined == "undefined"
 </code>
 </pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+var a = "123";
+if (a == 123) {
+	// a is "coerced" into a number
+}
+
+if (null == undefined) {
+	// "null" is coerced into being undefined
+}
+</code>
+</pre>
+</section>
+<section>
+<pre>
+<code class="javascript">
+var a = "123";
+if (a == 123) {
+	// TRUE
+	// a is "coerced" into a number
+}
+
+var b;
+if (b == null) {
+	// TRUE
+	// "undefined" is coerced into being "null"
+}
+</code>
+</pre>
+</section>
+
+<section>
+<pre>
+<code class="javascript">
+var a = "123";
+if (a === 123) {
+	// a HAS to be a number for this to be TRUE
+}
+
+var b;
+if (b === null) {
+	// b MUST have null assigned to it to be TRUE
+}
+
+// even better:
+if (!b) {
+	// use FALSY rule
+}
+</code>
+</pre>
+</section>
+
 </section>
 
 <section id="ECMAScript5">
@@ -483,6 +625,51 @@ JsonpService.prototype.create = function (data) {
 }());
 </code>
 </pre>
+</section>
+
+<section>
+<pre>
+<code class="javascript">
+(function() {
+	'use strict';
+
+	var a = [1, 2, 3];
+	
+	a.forEach(function(item) {
+		// do something on each array element
+	});
+
+}());
+</code>
+</pre>
+</section>
+
+<section>
+<pre>
+<code class="javascript">
+(function() {
+	'use strict';
+
+	var person = {
+		firstName: 'Peter',
+		lastName: 'Berry',
+		age: 41,
+		lives: 'Brunswick'
+	};
+
+	// Object.keys returns an array of properties
+	var properties = Object.keys(person);
+
+	// We can then use forEach to enumerate
+	// This code will output the value of each property
+	properties.forEach(function(p){
+		console.log(person[p]);
+	});
+}());
+</code>
+</pre>
+</section>
+
 </section>
 
 <section>
@@ -569,15 +756,35 @@ ajax('http://api.fantastic.com/post/12343').success(function(data){
 <pre>
 <code class="javascript">
 // Generators
+function fibonacci(){
+  var fn1 = 1;
+  var fn2 = 1;
+  while (1){
+    var current = fn2;
+    fn2 = fn1;
+    fn1 = fn1 + current;
+    yield current;
+  }
+}
 
+var sequence = fibonacci();
+print(sequence.next()); // 1
+print(sequence.next()); // 1
+print(sequence.next()); // 2
 </code>
 </pre>
 </section>
 <section>
 <pre>
 <code class="javascript">
-// Weak Maps
+// Weak Maps are key/value maps in which keys are object
+var a = {name: "Peter"};
+var map = new WeakMap();
+map.set(a, 21);
 
+if (map.has(a)) {
+	let age = map.get(a); // Returns 21
+}
 </code>
 </pre>
 </section>
@@ -585,7 +792,7 @@ ajax('http://api.fantastic.com/post/12343').success(function(data){
 
 <section id="Next-Week">
 	<h1>Performance</h1>
-	<p>Hosted by: Alastair</p>
+	<p>Hosted by: Alastair Burrowes</p>
 </section>
 
 
@@ -648,6 +855,15 @@ ajax('http://api.fantastic.com/post/12343').success(function(data){
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
+			});
+
+			Reveal.addEventListener('slidechanged', function(event){
+				var body = document.body;
+				if (!body.classList.contains('show-logo') && event.indexh!=0) {
+					body.classList.add('show-logo');
+				} else if (event.indexh==0) {
+					body.classList.remove('show-logo');
+				}
 			});
 
 		</script>

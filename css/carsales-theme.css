@@ -10,12 +10,29 @@
   font-weight: normal;
   font-style: normal;
 }
+.js-logo {
+  display: none;
+  width: 100px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.show-logo .js-logo {
+  display: block;
+}
 .reveal {
   font-family: "Lato", sans-serif;
   font-size: 36px;
   font-weight: normal;
   letter-spacing: -0.02em;
   color: #657b83;
+}
+a {
+  text-decoration: none;
+  color: #090;
+}
+a:hover {
+  text-decoration: underline;
 }
 ::selection {
   color: white;
@@ -98,5 +115,5 @@
   height: 61px;
   background-size: 157px 61px;
   display: block;
-  background: url("../../images/cs-logo.svg") no-repeat;
+  background: url("/images/cs-logo.svg") no-repeat;
 }
