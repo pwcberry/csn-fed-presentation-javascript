@@ -24,7 +24,7 @@
 	</head>
 
 	<body>
-		<span class="js-logo"><img src="/images/JS_Logo.svg" width="100" /></span>
+		<span class="js-logo"><img src="images/JS_Logo.svg" width="100" /></span>
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
@@ -45,7 +45,7 @@
 
 <section data-markdown="slides/maintenance-2.md"></section>
 
-<section class="has-quote" data-background="black">
+<section class="has-quote" data-background="#304830">
 	<blockquote>
 	<p>Programs are meant to be read by humans, only incidentally by computers to execute</p>
 	<cite>Donald Knuth</cite>
@@ -92,7 +92,7 @@
 // any number that isn't zero evaluates to TRUE
 var a = [1, 2, 3];
 while (a.length) {
-	// do something with array
+  // do something with array
 }
 </code>
 </pre>
@@ -103,8 +103,8 @@ while (a.length) {
 // any string that isn't empty evaluates to TRUE
 var s = "This is interesting";
 if (s) {
-	// while s.length is a postive number,
-	// we can just evaluate the string.
+  // while s.length is a postive number,
+  // we can just evaluate the string.
 }
 </code>
 </pre>
@@ -116,7 +116,7 @@ if (s) {
 // evaluates to TRUE
 var o = {};
 if (o) {
-	// 'o' exists, let's do something with it
+  // 'o' exists, let's do something with it
 }
 </code>
 </pre>
@@ -127,12 +127,12 @@ if (o) {
 // an example ajax success callback
 // receiving (parsed) JSON data
 function success(data) {
-	// check if data was returned as array
-	if (data && data.length) {
-		// do something with the array
-	} else if (data) {
-		// only one object
-	}
+  // check if data was returned as array
+  if (data && data.length) {
+    // do something with the array
+  } else if (data) {
+    // only one object
+  }
 }
 </code>
 </pre>
@@ -147,7 +147,7 @@ function success(data) {
 // "zero" (0) evalues to FALSE
 var elements = $('#Container > div');
 if (!elements.length) {
-	// There are no elements in this jQuery object
+  // There are no elements in this jQuery object
 }
 </code>
 </pre>
@@ -169,7 +169,7 @@ if (!s) {
 // "undefined" evaluates to FALSE
 var data;
 if (!data) {
-	// data is not defined ('undefined' by default)
+  // data is not defined ('undefined' by default)
 }
 </code>
 </pre>
@@ -179,11 +179,11 @@ if (!data) {
 <code class="javascript">
 // "null" evaluates to FALSE
 function Widget() {
-	this.element = null;
+  this.element = null;
 }
 var w = new Widget();
 if (!w.element) {
-	// element is null
+  // element is null
 }
 </code>
 </pre>
@@ -193,14 +193,14 @@ if (!w.element) {
 <code class="javascript">
 // Because of "false", we have "coalesce"
 (function() {
-	// CSN is the root namespace
-	// If it hasn't already been defined, do so
-	// Thanks to the short circuit "or",
-	// the left side will evalute to FALSE
-	// and assign an empty object to the 
-	// global "CSN" and the local variable.
+  // CSN is the root namespace
+  // If it hasn't already been defined, do so
+  // Thanks to the short circuit "or",
+  // the left side will evalute to FALSE
+  // and assign an empty object to the 
+  // global "CSN" and the local variable.
 
-	var CSN = window.CSN || (window.CSN = {});
+  var CSN = window.CSN || (window.CSN = {});
 
 }());
 </code>
@@ -210,45 +210,45 @@ if (!w.element) {
 
 <section id="IIFE">
 <section data-markdown="slides/style-4.md"></section>
-	<section>
-	<pre>
-	<code class="javascript">
+  <section>
+  <pre>
+  <code class="javascript">
 (function($, CSN) {
 
-	// define hidden objects and variables here
+  // define hidden objects and variables here
 
-	// define functions, classes here that are part of namespaces
+  // define functions, classes here that are part of namespaces
 
-	// define jQuery plugins
+  // define jQuery plugins
 
 }(jQuery, (window.CSN || (window.CSN = {}))));
-	</code>
-	</pre>
-	</section>
+  </code>
+  </pre>
+  </section>
 </section>
 
 <section id="Namespaces">
-	<section data-markdown="slides/style-5.md"></section>
-	<section>
-	<pre>
-	<code class="javascript">
+  <section data-markdown="slides/style-5.md"></section>
+  <section>
+  <pre>
+  <code class="javascript">
 (function(CSN){
-	// "CSN" is the root namespace
-	// Check if the "Utils" namespace has been defined
-	// and then use an alias variable to ease typing
+  // "CSN" is the root namespace
+  // Check if the "Utils" namespace has been defined
+  // and then use an alias variable to ease typing
 
-	var utils = CSN.Utils || (CSN.Utils = {});
+  var utils = CSN.Utils || (CSN.Utils = {});
 
-	// Add public functions to CSN.Utils
+  // Add public functions to CSN.Utils
 
-	utils.format = function(s) {
-		// defines CSN.Utils.format()
-	};
+  utils.format = function(s) {
+    // defines CSN.Utils.format()
+  };
 
 }((window.CSN || (window.CSN = {}))));
-	</code>
-	</pre>
-	</section>
+  </code>
+  </pre>
+  </section>
 </section>
 
 <section id="No-Block-Scope">
@@ -260,15 +260,15 @@ if (!w.element) {
 var element, inputs = document.getElementById('Module').getElementsByTagName('input');
 
 for (var i, j = inputs.length; i < j; i++) {
-	element = inputs.eq(i);
-	// Retain the value of "i" for each iteration
-	// By passing the value into this IIFE
-	(function(i) {
-		element.on('focus', function() {
-			// do something with "i"
-			$(this).data('index', i);
-		});
-	})(i);
+  element = inputs.eq(i);
+  // Retain the value of "i" for each iteration
+  // By passing the value into this IIFE
+  (function(i) {
+    element.on('focus', function() {
+      // do something with "i"
+      $(this).data('index', i);
+    });
+  })(i);
 }
 </code>
 </pre>
@@ -279,8 +279,8 @@ for (var i, j = inputs.length; i < j; i++) {
 // You need to record the index of each element
 // Even better
 $('#Module input').each(function(i, element){
-	// Each index is recorded
-	$(element).data('index', i);
+  // Each index is recorded
+  $(element).data('index', i);
 });
 </code>
 </pre>
@@ -293,15 +293,15 @@ $('#Module input').each(function(i, element){
 <pre>
 <code class="javascript">
 function Widget(element) {
-	this.element = element;
+  this.element = element;
 }
 
 Widget.prototype.change = function() {};
 
 Widget.prototype.init = function() {
-	this.element.on('click', function() {
-		// In here, "this" refers to the element
-	});
+  this.element.on('click', function() {
+    // In here, "this" refers to the element
+  });
 }
 </code>
 </pre>
@@ -310,19 +310,19 @@ Widget.prototype.init = function() {
 <pre>
 <code class="javascript">
 function Widget(element) {
-	this.element = element;
+  this.element = element;
 }
 
 Widget.prototype.change = function() {};
 
 Widget.prototype.init = function() {
-	var that = this;
-	this.element.on('click', function() {
-		// In here, "this" refers to the element
-		// But we can use "that" 
-		// to refer to the containing object
-		that.change();
-	});
+  var that = this;
+  this.element.on('click', function() {
+    // In here, "this" refers to the element
+    // But we can use "that" 
+    // to refer to the containing object
+    that.change();
+  });
 }
 </code>
 </pre>
@@ -333,18 +333,18 @@ Widget.prototype.init = function() {
 'use strict';
 // Using Function.bind()
 function Widget(element) {
-	this.element = element;
+  this.element = element;
 }
 
 Widget.prototype.change = function() {};
 
 Widget.prototype.init = function() {
-	var that = this;
-	this.element.on('click', function(ev) {
-		// In here "this" refers to
-		// the containing object
-		this.change();
-	}.bind(this));
+  var that = this;
+  this.element.on('click', function(ev) {
+    // In here "this" refers to
+    // the containing object
+    this.change();
+  }.bind(this));
 }
 </code>
 </pre>
@@ -382,9 +382,9 @@ JsonpService.postAjax = function (aspect, canPipe, itemCountKey) {
 };
 
 JsonpService.prototype.create = function (data) {
-    var handler = JsonpService.postAjax("create", true, "NewCount");
-	// wrap in jQuery.proxy to improve lexical scope
-	// and pass the handler to jQuery.ajax
+  var handler = JsonpService.postAjax("create", true, "NewCount");
+  // wrap in jQuery.proxy to improve lexical scope
+  // and pass the handler to jQuery.ajax
 };
 </code>
 </pre>
@@ -397,38 +397,38 @@ JsonpService.prototype.create = function (data) {
 <pre>
 <code class="javascript">
 (function($) {
-	'use strict';
-	
-	// "ToolboxWidget" class is hidden from outside world
-	function ToolboxWidget(element) {
-		this.element = element;
-		// Define other properties
-	}
-	ToolboxWidget.prototype.init = function() {
-		// Initialize state
-		// Invoke other setup methods
-	};
+  'use strict';
+  
+  // "ToolboxWidget" class is hidden from outside world
+  function ToolboxWidget(element) {
+    this.element = element;
+    // Define other properties
+  }
+  ToolboxWidget.prototype.init = function() {
+    // Initialize state
+    // Invoke other setup methods
+  };
 
-	$.fn.toolbox = function(options) {
-		options = $.extend({}, $.fn.toolbox.defaults, options);
+  $.fn.toolbox = function(options) {
+    options = $.extend({}, $.fn.toolbox.defaults, options);
 
-		this.each(function() {
-			// The ToolboxWidget handles the state
-			// of the object. We're reducing the
-			// number of DOM interactions to
-			// improve performance.
-			var w = new ToolboxWidget($(this));
-			w.init();
+    this.each(function() {
+      // The ToolboxWidget handles the state
+      // of the object. We're reducing the
+      // number of DOM interactions to
+      // improve performance.
+      var w = new ToolboxWidget($(this));
+      w.init();
 
-			// do more with widget
+      // do more with widget
 
-			w.data('widget', w);
-		});
-	
-		return this;
-	};
+      w.data('widget', w);
+    });
+  
+    return this;
+  };
 
-	$.fn.toolbox.defaults = {};
+  $.fn.toolbox.defaults = {};
 
 }(jQuery));
 </code>
@@ -484,10 +484,10 @@ CSN.App.init({startPage:2});
 <pre>
 <code class="javascript">
 function someMethod() {
-	return
-	{
-		name: "Peter"
-	}
+  return
+  {
+    name: "Peter"
+  }
 }
 </code>
 </pre>
@@ -496,9 +496,9 @@ function someMethod() {
 <pre>
 <code class="javascript">
 function someMethod() {
-	return {
-		name: "Peter"
-	};
+  return {
+    name: "Peter"
+  };
 }
 </code>
 </pre>
@@ -511,9 +511,9 @@ function someMethod() {
 <pre>
 <code class="javascript">
 if (a > 10)
-	doThis();
+  doThis();
 else
-	doThat();
+  doThat();
 </code>
 </pre>
 </section>
@@ -521,10 +521,10 @@ else
 <pre>
 <code class="javascript">
 if (a > 10)
-	doThis();
-	doSomethingElse();
+  doThis();
+  doSomethingElse();
 else
-	doThat();
+  doThat();
 </code>
 </pre>
 </section>
@@ -532,10 +532,10 @@ else
 <pre>
 <code class="javascript">
 if (a > 10) {
-	doThis();
-	doSomethingElse();
+  doThis();
+  doSomethingElse();
 } else {
-	doThat();
+  doThat();
 }
 </code>
 </pre>
@@ -562,11 +562,11 @@ if (a > 10) {
 <code class="javascript">
 var a = "123";
 if (a == 123) {
-	// a is "coerced" into a number
+  // a is "coerced" into a number
 }
 
 if (null == undefined) {
-	// "null" is coerced into being undefined
+  // "null" is coerced into being undefined
 }
 </code>
 </pre>
@@ -576,14 +576,14 @@ if (null == undefined) {
 <code class="javascript">
 var a = "123";
 if (a == 123) {
-	// TRUE
-	// a is "coerced" into a number
+  // TRUE
+  // a is "coerced" into a number
 }
 
 var b;
 if (b == null) {
-	// TRUE
-	// "undefined" is coerced into being "null"
+  // TRUE
+  // "undefined" is coerced into being "null"
 }
 </code>
 </pre>
@@ -594,17 +594,17 @@ if (b == null) {
 <code class="javascript">
 var a = "123";
 if (a === 123) {
-	// a HAS to be a number for this to be TRUE
+  // a HAS to be a number for this to be TRUE
 }
 
 var b;
 if (b === null) {
-	// b MUST have null assigned to it to be TRUE
+  // b MUST have null assigned to it to be TRUE
 }
 
 // even better:
 if (!b) {
-	// use FALSY rule
+  // use FALSY rule
 }
 </code>
 </pre>
@@ -618,10 +618,10 @@ if (!b) {
 <pre>
 <code class="javascript">
 (function() {
-	'use strict';
+  'use strict';
 
-	// OK, define module
-	// Any variable not defined will throw an error
+  // OK, define module
+  // Any variable not defined will throw an error
 }());
 </code>
 </pre>
@@ -631,13 +631,13 @@ if (!b) {
 <pre>
 <code class="javascript">
 (function() {
-	'use strict';
+  'use strict';
 
-	var a = [1, 2, 3];
-	
-	a.forEach(function(item) {
-		// do something on each array element
-	});
+  var a = [1, 2, 3];
+  
+  a.forEach(function(item) {
+    // do something on each array element
+  });
 
 }());
 </code>
@@ -648,23 +648,23 @@ if (!b) {
 <pre>
 <code class="javascript">
 (function() {
-	'use strict';
+  'use strict';
 
-	var person = {
-		firstName: 'Peter',
-		lastName: 'Berry',
-		age: 41,
-		lives: 'Brunswick'
-	};
+  var person = {
+    firstName: 'Peter',
+    lastName: 'Berry',
+    age: 41,
+    lives: 'Brunswick'
+  };
 
-	// Object.keys returns an array of properties
-	var properties = Object.keys(person);
+  // Object.keys returns an array of properties
+  var properties = Object.keys(person);
 
-	// We can then use forEach to enumerate
-	// This code will output the value of each property
-	properties.forEach(function(p){
-		console.log(person[p]);
-	});
+  // We can then use forEach to enumerate
+  // This code will output the value of each property
+  properties.forEach(function(p){
+    console.log(person[p]);
+  });
 }());
 </code>
 </pre>
@@ -726,64 +726,54 @@ jQuery("body").on('click', function() {
 
 <section data-markdown="slides/libraries-2.md"></section>
 
-<section>
 <section data-markdown="slides/libraries-3.md"></section>
+
+<section class="future-js"><h1>The Future</h1></section>
+<section id="The-Future" data-markdown="slides/the-future-1.md"></section> 
+<section>
+<section>
+	<h2>Promises</h2>
+	<p class="fragment">Handling events and passing to nested functions is messy - "callback hell"</p>
+	<p class="fragment">Promises has a fluent API</p>
+</section>
 <section>
 <pre>
 <code class="javascript">
-// Geezer Code sample goes here
+// Nested callbacks		
+http.get(url.parse("http://example.org/"), function (res) {
+    console.log(res.statusCode);  // maybe 302
+    http.get(url.parse(res.headers["location"]), function (res) {
+        console.log(res.statusCode);  // maybe 200
+    });
+});
 </code>
-</pre>
 </section>
-</section>
-
-<section class="future-js"><h1>The Future</h1></section>
-<section>
-<section id="The-Future" data-markdown="slides/the-future-1.md"></section> 
 <section>
 <pre>
 <code class="javascript">
 // Promises
-ajax('http://api.fantastic.com/post/12343').success(function(data){
-	// Do something
-}).then(function() {
-	// do something more, only if the response was successful.
+httpGet(url.parse("http://example.org/")).then(function (res) {
+    console.log(res.statusCode);  // maybe 302
+    return httpGet(url.parse(res.headers["location"]));
+}).then(function (res) {
+    console.log(res.statusCode);  // maybe 200
 });
 </code>
 </pre>
 </section>
-<section>
-<pre>
-<code class="javascript">
-// Generators
-function fibonacci(){
-  var fn1 = 1;
-  var fn2 = 1;
-  while (1){
-    var current = fn2;
-    fn2 = fn1;
-    fn1 = fn1 + current;
-    yield current;
-  }
-}
-
-var sequence = fibonacci();
-print(sequence.next()); // 1
-print(sequence.next()); // 1
-print(sequence.next()); // 2
-</code>
-</pre>
 </section>
+
+<section>
+<section><h2>Block Scope</h2></section>	
 <section>
 <pre>
 <code class="javascript">
-// Weak Maps are key/value maps in which keys are object
-var a = {name: "Peter"};
-var map = new WeakMap();
-map.set(a, 21);
-
-if (map.has(a)) {
-	let age = map.get(a); // Returns 21
+function makeDo(arg) {
+  if (arg.isValid) {
+    let a = arg.value;
+    // do something with a
+    // "a" is in block scope
+  }	
 }
 </code>
 </pre>
@@ -795,10 +785,7 @@ if (map.has(a)) {
 	<p>Hosted by: Alastair Burrowes</p>
 </section>
 
-
-<section class="recap-js"><h1>Recap</h1></section>
-
-<section data-markdown="slides/recap.md"></section>
+<section class="recap-js" data-markdown="slides/recap.md"></section>
 
 <section class="resources-js"><h1>Resources</h1></section>
 <section id="Essential-Viewing"><h2>Essential Viewing</h2></section>
@@ -823,7 +810,7 @@ if (map.has(a)) {
 		</div>
 
 		<footer class="slide-footer">
-			<span class="logo">logo</span>
+			<span class="logo"><img src="images/cs-logo.svg" width="157"/></span>
 		</footer>
 
 		<script src="lib/js/head.min.js"></script>

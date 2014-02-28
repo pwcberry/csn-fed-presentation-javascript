@@ -6,6 +6,6 @@ Introduced to the good, the bad, and the strange of JavaScript <!-- .element: cl
 
 Good programming style <!-- .element: class="fragment" -->
 
-Libaries and Frameworks <!-- .element: class="fragment" -->
+Libaries and frameworks <!-- .element: class="fragment" -->
 
 The future <!-- .element: class="fragment" -->

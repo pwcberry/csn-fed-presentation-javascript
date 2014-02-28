@@ -27,6 +27,15 @@
   letter-spacing: -0.02em;
   color: #657b83;
 }
+.reveal iframe.twitter-tweet-rendered {
+  margin-left: 25% !important;
+}
+.reveal blockquote p {
+  font-size: 1.5em;
+}
+.reveal blockquote cite {
+  margin-top: 0.5em;
+}
 a {
   text-decoration: none;
   color: #090;
@@ -87,7 +96,7 @@ a:hover {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 61px;
+  height: 73px;
 }
 .slide-footer h2 {
   color: black;
@@ -110,10 +119,8 @@ a:hover {
 }
 .slide-footer .logo {
   float: left;
-  text-indent: -10000px;
   width: 157px;
   height: 61px;
-  background-size: 157px 61px;
+  margin-left: 12px;
   display: block;
-  background: url("/images/cs-logo.svg") no-repeat;
 }
